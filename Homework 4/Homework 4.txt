@@ -1,0 +1,67 @@
+1. Створіть користувача з іменем "bob".
+
+sudo adduser bob
+
+Adding user `bob' ...
+Adding new group `bob' (1002) ...
+Adding new user `bob' (1002) with group `bob (1002)' ...
+Creating home directory `/home/bob' ...
+Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for bob
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] y
+Adding new user `bob' to supplemental / extra groups `users' ...
+Adding user `bob' to group `users' ...
+
+2. Додайте створеного користувача до групи sudo (щоб він міг виконувати команди як адміністратор).
+Це робится командою usermod.
+
+sudo usermod -aG sudo bob
+
+3. Створіть сценарій у каталозі /home/bob/, який під час виконання змінить ім'я хоста на "ubuntu22". 
+Атрибути виконання сценарію повинні бути встановлені виключно для користувача "bob".
+
+
+
+
+
+короче тут я поплыл,, пробовал touch создать hostname.sh .....  но зашел за боба и боб фаил не видит....  ковырял но получилось только создать папку   ((((
+я так понял надо vim сделать и написать там sudo hostname ubuntu22 
+и я так понял нужно сделать файлу chmod 700 для боба 
+кроч у меня получилось - с под моего акк создать в директории боба только папку, и он ее видит , в gui с под моего аккаунта вижу скрипт в home  ,  у боба в home не вижу ....
+следовательно боб заупстить фаил не может , в терминале hostname для боба я поменял да получилось , но как с моего юзера положить в папку боба скрипт чтобы далее боб зашел Увидел! и просто запустил скрипт 
+я не понял 
+либо я не понял задачу в корне .... 
+текст скрипта: 
+su bob
+touch /home/bob/hostname.sh
+"chmod 700 change_hostname.sh
+./change_hostname.sh
+hostname ubuntu22'
+
+
+
+
+
+5.
+с nginx проблем небыло :)
+
+
+su bob
+ sudo su 
+apt install nginx
+y 
+netstat
+ 
+
+
+
+
