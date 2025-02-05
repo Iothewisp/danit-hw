@@ -1,0 +1,194 @@
+Exercise 1: Hello World
+Write a Bash script that simply echoes "Hello, World!" when executed.
+touch hw51.sh /home
+ chmod +x hw51.sh 
+ nvim hw51.sh /home
+#!bin/bash 
+echo "Hellow world!"
+
+Exercise 2: User Input
+Create a script that asks the user for their name and then greets them using that name. 
+touch hw52.sh /home
+ chmod +x hw52.sh 
+ nvim hw52.sh /home
+#!bin/bash 
+read -p "Vvedi svoe imya " name
+echo "Privet, $name! Rad tebya videt!"
+
+Exercise 3: Conditional Statements
+Write a script that checks if a file exists in the current directory. 
+If it does, print a message saying it exists; otherwise, print a message saying it doesn't exist.
+
+Touch hw53.sh /home
+chmod +x or 777 /home
+nvim hw53.sh
+#!/bin/bash
+
+echo -n "VVedi imya faila"
+read filename
+
+if [ -e "$filename" ]; then
+        echo " faile '$filename'
+        exists."
+else 
+        echo " faile '$filename'
+does not exists."
+fi
+
+ Exercise 4: Looping
+Create a script that uses a loop to print numbers from 1 to 10.
+
+#!/bin/bash 
+
+for n in {1...10}
+do
+    echo $n
+done
+
+
+Exercise 5: File Operations
+Write a script that copies a file from one location to another. Both localtions should be passed as arguments
+
+#!/bin/bash
+
+if ["$#" -ne 2 ]; then
+	echo "Usage: $0
+	<source> <path>"
+	exit 1
+fi
+source="$1"
+path="$2"
+if [ ! -e "sorce_file" ] ;
+then 
+	echo "Error: source  
+	'$ source' does not exist."
+	exit 1
+fi
+cp "$source"
+"$path"
+
+if  [ $? -eq 0 ]; then 
+        echo "File copied succsessfully to '$path'"
+else 
+	echo "error: Failed to copy the file."
+fi
+
+Exercise 6: String Manipulation
+Build a script that takes a user's input as a sentence and then reverses the sentence word by word (e.g., "Hello World" becomes "World Hello").
+
+!
+echo -n "VVedi sentence"
+read sentence
+
+reversed=$(echo "$sentence" | 
+        awk '{ for (i=NF; i>0; i--)
+        printf "%s ", $i; print "" }')
+        echo "Reversed sentence:
+        $reversed"
+~
+
+alexey@debian:~$ ./hw567.sh
+VVedi sentence sho ti
+Reversed sentence:
+	ti sho 
+alexey@debian:~$ 
+
+
+Exercise 7: Command Line Arguments
+Develop a script that accepts a filename as a command line argument and prints the number of lines in that file.
+
+
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <name>"
+  exit 1
+fi
+
+name="$1"
+
+if [ ! -f "$name" ]; then
+  echo "File not found: $name"
+  exit 1
+fi
+
+strokav=$(wc -l < "$name")
+
+echo "file '$name' has $strokav strok."
+
+
+
+
+
+alexey@debian:~$ nvim hw567.sh
+alexey@debian:~$ ./hw567.sh dlyaboba21.sh
+file 'dlyaboba21.sh' has 5 strok.
+alexey@debian:~$ 
+
+
+Exercise 8: Arrays
+Write a script that uses an array to store a list of fruits. Loop through the array and print each fruit on a separate line.
+
+
+
+#!/bin/bash
+
+frukti=("billibob" "cheburek" "piwo" "shsahlik" "mozg" "pineapple" "applepie" "palyanitca")
+
+for frukt in "${frukti[@]}"; do
+  echo "$frukt"
+done
+
+~
+
+
+alexey@debian:~/hw5$ ./hw5frukt.sh
+billibob
+cheburek
+piwo
+shsahlik
+mozg
+pineapple
+applepie
+palyanitca
+alexey@debian:~/hw5$ 
+
+
+Exercise 9: Error Handling
+Develop a script that attempts to read a file and handles errors gracefully. If the file exists, it should print its contents; if not, it should display an error message.
+
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <name>"
+  exit 1
+fi
+
+name="$1"
+
+if [ ! -f "$name" ]; then
+  echo "Error: File '$name' not found."
+  exit 1
+fi
+
+cat "$name" || {
+  echo "Error: no read '$name'."
+  exit 1
+}
+
+alexey@debian:~/hw5$ touch bobchik123.txt
+alexey@debian:~/hw5$ nvim bobchik123.txt
+alexey@debian:~/hw5$ ./hw2014.sh bobchik123.txt
+
+
+echo hi 
+@$&2fhihsbjgdsfjkndg
+55555
+alexey@debian:~/hw5$ 
+alexey@debian:~/hw5$ 
+
+
+кроч 10 systemctl  не сделал сложна там надо ini писать  я день с этим просидел 
+
+
+
