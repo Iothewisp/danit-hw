@@ -1,0 +1,49 @@
+Сценарій генерує випадкове число від 1 до 100 і зберігає його в змінній. Користувачеві пропонується вгадати число. Якщо припущення користувача правильне, сценарій має надрукувати «Вітаємо! Ви вгадали правильне число». і вихід. Якщо припущення користувача неправильне, сценарій має надати зворотний зв’язок, як-от «Занадто високо» або «Занадто низько», і дозволити користувачеві вгадати ще раз. Користувач повинен мати максимум 5 спроб, щоб вгадати правильне число. Після 5 невдалих спроб сценарій має надрукувати «Вибачте, у вас закінчилися спроби.
+Правильним числом було [правильний номер]» і завершити роботу.
+
+loop100.sh
+
+#!/bin/bash
+#
+gennum=$(( 1 + RANDOM % 100 ))
+echo "($gennum)"
+echo "write random number"
+for i in $(seq 1 5);
+do 
+	read readnum
+	if (( $readnum == $gennum ));
+	then echo "gc! you win"
+		exit 0
+	elif [[ $readnum > $gennum ]];
+	then echo "too hight"
+	else echo "too low"
+fi
+done
+
+echo "tryes is over, the number $gennum"
+
+2.Створіть користувача john із домашньою папкою за типовим шляхом.
+
+sudo useradd -m alexey #(john)
+sudo passwd john ***
+sudo usermod -aG sudo alexey # (john)
+
+Встановіть і налаштуйте SSH-сервер, який прослуховує порт 2222, обмежуючи кореневий доступ і забороняючи авторизацію пароля.
+Тільки john може підключитися до вашого сервера і лише за допомогою ключа ssh.
+
+(Pass.conf)
+Port 2222                            
+PermitRootLogin no                   
+PasswordAuthentication no           
+AllowUsers alexey #John                   
+PubkeyAuthentication yes
+
+Паралельно запустіть ssh у режимі налагодження, прослуховуючи порт 3333, 
+без обмежень на підключення користувача (окрім root), з можливістю підключення за паролем і ключем ssh.
+
+(ssh.conf)
+Port 3333                            # Change SSH port to 2222
+PermitRootLogin no                   # Disable root login
+PasswordAuthentication yes
+AllowUsers *
+PubkeyAuthentication no
