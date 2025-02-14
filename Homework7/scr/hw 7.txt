@@ -1,0 +1,126 @@
+1. Створення облікових записів користувачів:
+ Створіть облікові записи користувачів для розробників: «dev1», «dev2» і «dev3».
+#!/bin/bash
+
+for user in dev1 dev2 dev3; do
+useradd -m "dev1"
+useradd -m "dev2"
+useradd -m "dev3"
+
+2. Створення груп:
+Створіть дві групи: «розробники» та «веб-майстри».
+
+groupadd developers
+groupadd webmasters
+
+3. Призначення користувачів до груп:
+
+usermod -aG developers dev1
+usermod -aG developers dev2
+usermod -aG webmasters dev3
+
+
+4. Встановити групу за замовчуванням для користувачів:
+Переконайтеся, що групою за умовчанням для кожного розробника встановлено «розробники».
+
+for user in dev1 dev2 dev3; do
+    usermod -g developers "$user"
+done
+
+echo "Default group set for developers."
+
+5. Створення домашніх каталогів:
+Створіть домашні каталоги для кожного розробника в каталозі "/home".
+
+for user in dev1 dev2 dev3; do
+    mkdir -p "/home/$user"
+    chown "$user:developers" "/home/$user"
+done
+
+echo "Home directories created."
+
+
+6. Клонуйте обліковий запис користувача:
+Створіть нового користувача "backupdev" і клонуйте домашній каталог "dev1" для цього користувача.
+
+useradd -m backupdev
+cp -r /home/dev1/. /home/backupdev/
+chown -R backupdev:developers /home/backupdev
+
+echo "User backupdev created and home directory cloned."
+
+7. Налаштування дозволів для спільного проекту:
+Створіть каталог під назвою "web_project" у "/home".
+Дозвольте групі «розробники» доступ для читання та запису.
+
+
+mkdir -p /home/web_project
+chown :developers /home/web_project
+chmod 777 /home/web_project
+echo "Shared project directory configured."
+
+8. Незмінний файл журналу:
+Створіть файл my.log у /home dir, забороніть будь-кому писати в нього, окрім додавання нового вмісту в кінець файлу.
+
+touch /home/my.log
+chmod 777 /home/my.log
+chattr +a /home/my.log
+
+echo "Log file created and set as append-only."
+
+
+
+
+
+
+
+Завдання 2: Моніторинг використання диска
+
+Напишіть сценарій і налаштуйте crontab для запуску цього сценарію, який перевірятиме використання вашого обсягу /, і якщо воно перевищує X відсотків (налаштовується в crontab), він записуватиме попереджувальне повідомлення у файл журналу /var/log/disk.log .
+
+#!/bin/bash
+#
+disc_log=${1}
+disc_now=$(df / | grep / | awk '{ print $5 } ' | sed 's/%//g')
+     echo "$disc_now"
+     echo "$disc_log"
+if [[ $disc_now -gt $disc_log ]]; then
+        echo "used space disc more than $disc_log  " >> /var/log/disc.log
+
+fi
+
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+*/10 * * * * /home/alexey/Hw7/hw777.sh 11
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+
+
+
+
+Завдання 3: Конфігурація Monit для моніторингу Nginx
+
+Створіть конфігурацію Monit для моніторингу служби nginx. Моніторинг повинен перевіряти,
+чи доступна служба на порту 80 локального хосту.
+Якщо служба все ще недоступна після семи перевірок, монітор припиняє спроби перезапуску.
+
+check process nginx with pidfile /run/nginx.pid
+start program = "/usr/sbin/service nginx start" with timeout 60 seconds
+stop program  = "/usr/sbin/service nginx stop"
+if failed host 127.0.0.1 port 80 protocol http for 7 cycles then restart
+
