@@ -1,0 +1,63 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+MYSQL_ROOT_PASSWORD = "qwerty"
+MYSQL_DB_NAME = "db_vm"
+MYSQL_USER = "db_user"
+MYSQL_USER2 = "db_user2"
+MYSQL_PASSWORD = "db_pass"
+DB_HOST = "192.168.100.4"
+
+Vagrant.configure("2") do |config|
+
+  # Database VM Configuration
+  config.vm.define "db_vm" do |mysql|
+    mysql.vm.box = "ubuntu/focal64"
+    mysql.vm.network "private_network", ip: "192.168.100.4"
+
+    mysql.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"
+    end
+
+    mysql.vm.provision "shell", inline: <<-SHELL
+      sudo apt update
+      sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password #{MYSQL_ROOT_PASSWORD}"
+      sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password #{MYSQL_ROOT_PASSWORD}"
+      sudo apt install -y mysql-server
+
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "CREATE DATABASE #{MYSQL_DB_NAME};"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "CREATE USER '#{MYSQL_USER}'@'192.168.100.3' IDENTIFIED BY '#{MYSQL_PASSWORD}';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON #{MYSQL_DB_NAME}.* TO '#{MYSQL_USER}'@'192.168.100.3';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "CREATE USER '#{MYSQL_USER2}'@'192.168.100.3' IDENTIFIED BY '#{MYSQL_PASSWORD}';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON #{MYSQL_DB_NAME}.* TO '#{MYSQL_USER2}'@'192.168.100.3';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
+
+      sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf
+      sudo systemctl restart mysql
+    SHELL
+  end
+
+
+                config.vm.define "app_vm" do |app_vm|
+                        app_vm.vm.box = "ubuntu/focal64"
+                        app_vm.vm.provider "virtualbox" do |vb|
+                        vb.memory = "4096"
+                end
+                app_vm.vm.network "private_network", ip: "192.168.100.3"
+                app_vm.vm.provision "shell", inline: <<-SHELL
+                        sudo apt update
+                        sudo apt install -y mysql-client
+                sudo apt install -y maven
+                        sudo apt install -y openjdk-11-jdk
+                        sudo adduser --disabled-password --gecos "" appuser
+                        git clone https://github.com/Pavlovskyi-Andrii/petclinyc.git
+                        sudo chown -R appuser:appuser /home/vagrant/petclinyc
+                        sudo -u appuser bash << EOF
+                        cd /home/vagrant/petclinyc/PetClinic
+                        chmod +x mvnw
+                        ./mvnw package
+                        java -jar target/*.jar
+                SHELL
+
+  end
+end
