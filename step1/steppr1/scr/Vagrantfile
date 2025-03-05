@@ -1,0 +1,100 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Переменные для конфигурации MySQL
+MYSQL_ROOT_PASSWORD = "lex"     # Пароль для root пользователя MySQL
+MYSQL_DB_NAME = "db_vm"         # Имя создаваемой базы данных
+MYSQL_USER = "db_user"          # Имя первого пользователя базы данных
+MYSQL_USER2 = "db_user2"        # Имя второго пользователя базы данных
+MYSQL_PASSWORD = "db_pass"      # Пароль для пользователей базы данных
+DB_HOST = "192.168.100.4"       # IP-адрес сервера базы данных
+
+# Определение конфигурации Vagrant
+Vagrant.configure("2") do |config|
+
+  # Конфигурация виртуальной машины для базы данных
+  config.vm.define "db_vm" do |mysql|
+    mysql.vm.box = "ubuntu/focal64"  # Используемый образ операционной системы (Ubuntu 20.04)
+    mysql.vm.network "private_network", ip: "192.168.100.4"  # Настройка частной сети
+
+    mysql.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"  
+    end
+
+    # Скрипт инициализации виртуальной машины базы данных
+    mysql.vm.provision "shell", inline: <<-SHELL
+      sudo apt update  # Обновление списка пакетов
+      
+      # Установка MySQL с предварительно заданным паролем root
+      sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password #{MYSQL_ROOT_PASSWORD}"
+      sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password #{MYSQL_ROOT_PASSWORD}"
+      sudo apt install -y mysql-server  # Установка MySQL сервера
+      
+      # Создание базы данных
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "CREATE DATABASE #{MYSQL_DB_NAME};"
+      
+      # Создание пользователей и выдача прав
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "CREATE USER '#{MYSQL_USER}'@'192.168.100.3' IDENTIFIED BY '#{MYSQL_PASSWORD}';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON #{MYSQL_DB_NAME}.* TO '#{MYSQL_USER}'@'192.168.100.3';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "CREATE USER '#{MYSQL_USER2}'@'192.168.100.3' IDENTIFIED BY '#{MYSQL_PASSWORD}';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON #{MYSQL_DB_NAME}.* TO '#{MYSQL_USER2}'@'192.168.100.3';"
+      sudo mysql -uroot -p"#{MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"  # Применение изменений
+      
+      # Разрешение удаленных подключений к MySQL
+      sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf
+      sudo systemctl restart mysql  # Перезапуск MySQL для применения изменений
+    SHELL
+  end
+
+  # Конфигурация виртуальной машины для приложения
+  config.vm.define "app_vm" do |app_vm|
+    app_vm.vm.box = "ubuntu/focal64"  # Используемый образ Ubuntu 20.04
+    app_vm.vm.provider "virtualbox" do |vb|
+      vb.memory = "4096"  # Выделение 4 ГБ оперативной памяти
+    end
+    app_vm.vm.network "private_network", ip: "192.168.100.3"  # Настройка частной сети
+    
+    # Скрипт инициализации виртуальной машины приложения
+    app_vm.vm.provision "shell", inline: <<-SHELL
+      sudo apt update  # Обновление списка пакетов
+      sudo apt install -y mysql-client  # Установка MySQL клиента для подключения к базе данных
+      sudo apt install -y maven  # Установка Maven для сборки проекта
+      sudo apt install -y openjdk-11-jdk  # Установка OpenJDK 11
+      
+      # Создание нового пользователя для запуска приложения
+      sudo adduser --disabled-password --gecos "" appuser
+
+      # Клонирование репозитория с исходным кодом приложения
+       # Клонирование репозитория
+      git clone https://github.com/Iothewisp/PetClinic.git /home/vagrant/PetClinic
+
+      # Проверка, что репозиторий скачался
+      if [ ! -d /home/vagrant/PetClinic/PetClinic ]; then
+      echo "Ошибка: репозиторий не был клонирован!"
+      exit 1
+      fi
+
+	  
+
+      
+	  # Проверка существования файла mvnw
+      if [ ! -f /home/vagrant/PetClinic/PetClinic/mvnw ]; then
+        echo "Файл mvnw не найден!"
+        exit 1
+      fi
+
+      # Назначение прав на файлы проекта для пользователя appuser
+      sudo chown -R appuser:appuser /home/vagrant
+
+      # Разрешение на выполнение mvnw
+      sudo chmod +x /home/vagrant/PetClinic/PetClinic/mvnw
+
+      # Запуск сборки и выполнения приложения от имени пользователя appuser
+      sudo -u appuser bash <<EOF
+      cd /home/vagrant/PetClinic/PetClinic  # Переход в каталог с проектом
+      ./mvnw package  # Сборка проекта с помощью Maven
+      java -jar target/*.jar  # Запуск скомпилированного JAR-файла
+      EOF
+    SHELL
+  end
+end
