@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class AlphabetBase:
     def __init__(self, language, characters):
         self.language = language
@@ -83,3 +84,90 @@ if __name__ == "__main__":
                                                                                                                                             
     print("Sample sentence:", EnglishAlphabet.sample_text())   
 
+=======
+class AlphabetBase:
+    def __init__(self, language, characters):
+        self.language = language
+        self.characters = list(characters)
+
+    def display(self):
+        print(" ".join(self.characters))
+
+    def count_letters(self):
+        return len(self.characters)
+
+
+class EnglishAlphabet(AlphabetBase):
+    TOTAL_LETTERS = 26
+
+    def __init__(self):
+        super().__init__('English', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
+    def is_valid_letter(self, char):
+        return char.upper() in self.characters
+
+    def count_letters(self):
+        return self.TOTAL_LETTERS
+
+    @staticmethod
+    def sample_text():
+        return "Statmetod return works."
+
+
+if __name__ == "__main__":
+    eng_alph = EnglishAlphabet()
+
+    eng_alph.display()
+    print("Total letters:", eng_alph.count_letters())
+   while True:
+        letter = input("Type a letter (or 'quit' to stop): ")
+        if letter.lower() == 'quit':
+            break
+        elif len(letter) == 1:
+            if eng_alph.is_valid_letter(letter):
+                print("""Yes, we have it in alphabet.
+░░░░░░░░░░░░▄▄░░░░░░░░░░░░░░
+░░░░░░░░░░░█░░█░░░░░░░░░░░░░
+░░░░░░░░░░░█░░█░░░░░░░░░░░░░
+░░░░░░░░░░█░░░█░░░░░░░░░░░░░
+░░░░░░░░░█░░░░█░░░░░░░░░░░░░
+██████▄▄█░░░░░██████▄░░░░░░░
+▓▓▓▓▓▓█░░░░░░░░░░░░░░█░░░░░░
+▓▓▓▓▓▓█░░░░░░░░░░░░░░█░░░░░░
+▓▓▓▓▓▓█░░░░░░░░░░░░░░█░░░░░░
+▓▓▓▓▓▓█░░░░░░░░░░░░░░█░░░░░░
+▓▓▓▓▓▓█░░░░░░░░░░░░░░█░░░░░░
+▓▓▓▓▓▓█████░░░░░░░░░██░░░░░░
+█████▀░░░░▀▀████████░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+╔════╗░░╔════╗╔═══╗░░░░░░░░░
+║████║░░║████║║███╠═══╦═════╗
+╚╗██╔╝░░╚╗██╔╩╣██╠╝███║█████║
+░║██║░░░░║██║╔╝██║███╔╣██══╦╝
+░║██║╔══╗║██║║██████═╣║████║
+╔╝██╚╝██╠╝██╚╬═██║███╚╣██══╩╗
+║███████║████║████║███║█████║
+╚═══════╩════╩════════╩═════╝""")
+            else:
+                print("""No, its not in English alphabet.
+                ⠰⡿⠿⠛⠛⠻⠿⣷
+⠀⠀⠀⠀⠀⠀⣀⣄⡀⠀⠀⠀⠀⢀⣀⣀⣤⣄⣀⡀
+⠀⠀⠀⠀⠀⢸⣿⣿⣷⠀⠀⠀⠀⠛⠛⣿⣿⣿⡛⠿⠷
+⠀⠀⠀⠀⠀⠘⠿⠿⠋⠀⠀⠀⠀⠀⠀⣿⣿⣿⠇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠁
+
+⠀⠀⠀⠀⣿⣷⣄⠀⢶⣶⣷⣶⣶⣤⣀
+⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠈⠙⠻⠗
+⠀⠀⠀⣰⣿⣿⣿⠀⠀⠀⠀⢀⣀⣠⣤⣴⣶⡄
+⠀⣠⣾⣿⣿⣿⣥⣶⣶⣿⣿⣿⣿⣿⠿⠿⠛⠃
+⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁
+⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁
+⠀⠀⠛⢿⣿⣿⣿⣿⣿⣿⡿⠟
+⠀⠀⠀⠀⠀⠉⠉⠉ """)
+        else:
+            print("Enter a single letter.")
+                                                                                                                                            
+    print("Sample sentence:", EnglishAlphabet.sample_text())   
+
+>>>>>>> add003d (Переместил содержимое папки hw12 в корень репозитория)

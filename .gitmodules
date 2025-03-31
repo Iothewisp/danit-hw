@@ -1,0 +1,3 @@
+[submodule "hw12"]
+	path = hw12
+	url = https://github.com/Iothewisp/danit-hw

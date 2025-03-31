@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Pet</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Add a New Pet</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if success %}
+        <p class="success">{{ success }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="name">Pet Name:</label>
+        <input type="text" name="name" id="name" required>
+        
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" required>
+
+        <button type="submit">Add Pet</button>
+    </form>
+
+    <a href="/">Go Back to Home</a>
+</body>
+</html>
+
