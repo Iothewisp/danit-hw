@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 class AlphabetBase:
     def __init__(self, language, characters):
         self.language = language
@@ -85,6 +86,8 @@ if __name__ == "__main__":
     print("Sample sentence:", EnglishAlphabet.sample_text())   
 
 =======
+=======
+>>>>>>> add003d15563a17eccde2070767cb5e133312ad0
 class AlphabetBase:
     def __init__(self, language, characters):
         self.language = language
@@ -170,4 +173,7 @@ if __name__ == "__main__":
                                                                                                                                             
     print("Sample sentence:", EnglishAlphabet.sample_text())   
 
+<<<<<<< HEAD
 >>>>>>> add003d (Переместил содержимое папки hw12 в корень репозитория)
+=======
+>>>>>>> add003d15563a17eccde2070767cb5e133312ad0
