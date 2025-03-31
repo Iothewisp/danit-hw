@@ -1,0 +1,29 @@
+services:
+  elasticsearch:
+    image: elasticsearch:7.17.25
+    environment:
+      discovery.type: 'single-node'
+      xpack.security.enabled: 'false'
+      ES_JAVA_OPTS: '-Xms1g -Xmx1g'
+    ports:
+       - 9200:9200  
+    volumes:
+      - elastic:/usr/share/elasticsearch/data
+
+  fluentd:
+    image: fluentd:latest
+    volumes:
+       - ./fluentd/conf:/fluentd/etc
+       - ./logs:/fluentd/log
+    ports:
+      - 24224:24224
+  
+  kibana:
+    image: kibana:7.17.25
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+
+volumes:
+  elastic:

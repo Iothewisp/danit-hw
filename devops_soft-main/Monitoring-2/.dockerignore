@@ -1,0 +1,4 @@
+fluentd
+logs
+docker-compose.yml
+Dockerfile

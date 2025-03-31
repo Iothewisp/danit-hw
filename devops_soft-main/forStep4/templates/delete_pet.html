@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Pet</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Delete a Pet</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if success %}
+        <p class="success">{{ success }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="id">Pet ID:</label>
+        <input type="number" name="id" id="id" required>
+
+        <button type="submit">Delete Pet</button>
+    </form>
+
+    <a href="/">Go Back to Home</a>
+</body>
+</html>
+
