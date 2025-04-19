@@ -1,0 +1,34 @@
+#version: '3.8'
+
+services:
+  jenkins-master:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-master
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
+  jenkins-agent:
+    image: jenkins/agent:latest 
+    container_name: jenkins-agent
+    user: root
+    depends_on:
+      - jenkins-master
+    volumes:  
+      - jenkins_agent_home:/home/jenkins/agent
+    command: >
+      sh -c "curl -sO http://jenkins-master:8080/jnlpJars/agent.jar &&
+             java -jar agent.jar 
+             -url http://jenkins-master:8080/ 
+             -secret 96ad4a2b20bd1b98f56b698f2db47ee09d713c241908820a5cd80159e5aaf269 
+             -name agent-1 
+             -webSocket 
+             -workDir /home/jenkins/agent"
+    environment: 
+      VAR: VAL
+
+volumes:
+  jenkins_agent_home:
+  jenkins_home:
+
