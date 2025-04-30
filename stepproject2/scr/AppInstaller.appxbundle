@@ -1,0 +1,894 @@
+<!DOCTYPE html><html
+	class=" is-full hub has-default-focus theme-light"
+	lang="en-us"
+	dir="ltr"
+	data-authenticated="false"
+	data-auth-status-determined="false"
+	data-target="docs"
+	x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="MSIX documentation - MSIX" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://learn.microsoft.com/en-us/windows/msix/" /><meta property="og:description" content="MSIX is a packaging format for Windows apps that is built to be safe and reliable. It is based on a combination of .msi, .appx, App-V and ClickOnce installation technologies." /><meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png" />
+
+	<meta property="og:image:alt" content="Microsoft Learn" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<meta name="twitter:site" content="@MicrosoftLearn" />
+
+	<meta name="color-scheme" content="light dark"><meta name="author" content="andreww-msft" />
+<meta name="breadcrumb_path" content="/windows/msix/breadcrumb/toc.json" />
+<meta name="depot_name" content="MSDN.msix" />
+<meta name="description" content="MSIX is a packaging format for Windows apps that is built to be safe and reliable. It is based on a combination of .msi, .appx, App-V and ClickOnce installation technologies." />
+<meta name="document_id" content="2cf767e0-b27f-edd9-bf8e-d49994d8dfc1" />
+<meta name="document_version_independent_id" content="1e8122d0-f6a5-1cae-b4dd-e8c97e9674c8" />
+<meta name="feedback_help_link_type" content="get-help-at-qna" />
+<meta name="feedback_help_link_url" content="https://learn.microsoft.com/answers/tags/184/windows-app-sdk/" />
+<meta name="feedback_product_url" content="https://aka.ms/msixcommunity" />
+<meta name="feedback_system" content="Standard" />
+<meta name="git_commit_id" content="b95b44af4f9a30ac2dc0d58f3ee84fcb3d0b81e5" />
+<meta name="gitcommit" content="https://github.com/MicrosoftDocs/msix-pr/blob/b95b44af4f9a30ac2dc0d58f3ee84fcb3d0b81e5/msix-src/index.yml" />
+<meta name="keywords" content="windows 10, uwp, MSIX" />
+<meta name="locale" content="en-us" />
+<meta name="ms.author" content="andreww" />
+<meta name="ms.custom" content="RS5, seodec18" />
+<meta name="ms.date" content="11/06/2019" />
+<meta name="ms.localizationpriority" content="medium" />
+<meta name="ms.service" content="windows" />
+<meta name="ms.subservice" content="msix" />
+<meta name="ms.topic" content="hub-page" />
+<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/msix-pr/blob/live/msix-src/index.yml" />
+<meta name="page_type" content="hub" />
+<meta name="schema" content="Hub" />
+<meta name="site_name" content="Docs" />
+<meta name="summary" content="MSIX is a Windows app package format that combines the best features of MSI, .appx, App-V, and ClickOnce to provide a modern and reliable packaging experience." />
+<meta name="uhfHeaderId" content="MSDocsHeader-MSIX" />
+<meta name="updated_at" content="2024-06-11 08:41 PM" />
+<meta name="platform_id" content="dec7277e-abba-5641-4dfd-5c553b143692" />
+	
+	<meta name="cmProducts" content="https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cd440f3c-1b78-40a7-97ba-aa00a1d79df7" data-source="generated" />
+	<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8" data-source="generated" />
+	
+	<meta name="spProducts" content="https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c828f7e0-89b4-459c-9bae-d7ab1c4bd9ad" data-source="generated" />
+	<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8" data-source="generated" />
+	<meta name="scope" content="MSIX" /><meta name="github_feedback_content_git_url" content="https://github.com/microsoftdocs/msix-docs/blob/main/msix-src/index.yml" /><link href="https://learn.microsoft.com/en-us/windows/msix/" rel="canonical"><title>MSIX documentation - MSIX | Microsoft Learn</title><link rel="stylesheet" href="/static/assets/0.4.030276647/styles/site-ltr.css">
+
+	<script id="msdocs-script">
+	var msDocs = {environment: {
+			supportLevel: 'production',
+			accessLevel: 'online',
+			reviewFeatures: false,
+			systemContent: true,
+			azurePortalHostname: 'portal.azure.com',
+			legacyHosting: false,
+			siteName: 'learn',
+		},data: {
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Hub',
+			brand: '',
+			context: {},
+			feedbackHelpLinkType:'get-help-at-qna',
+			feedbackHelpLinkUrl:'https://learn.microsoft.com/answers/tags/184/windows-app-sdk/',
+			standardFeedback: false,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'Standard',
+			feedbackGitHubRepo: '',
+			feedbackProductUrl: 'https://aka.ms/msixcommunity',extendBreadcrumb: false,isEditDisplayable: false,
+			hideViewSource: false,
+			isPermissioned: false,
+			isPrivateUnauthorized: false,hasRecommendations: false,contributors: [{ name: "drewbatgit", url: "https://github.com/drewbatgit" },{ name: "anarvekar-msft", url: "https://github.com/anarvekar-msft" },{ name: "mcleanbyron", url: "https://github.com/mcleanbyron" },{ name: "DCtheGeek", url: "https://github.com/DCtheGeek" },{ name: "dianmsft", url: "https://github.com/dianmsft" }],},
+		functions:{}
+	};
+	</script><script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+	<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-4.min.js"></script><script src="/static/assets/0.4.030276647/global/deprecation.js"></script><script src="/static/assets/0.4.030276647/scripts/en-us/index-docs.js"></script></head>
+
+<body lang="en-us" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="#main" style="z-index: 1070" class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center  has-body-background" tabindex="1">Skip to main content</a><div hidden id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;"
+			hidden
+		>
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">This browser is no longer supported.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+						style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">Download Microsoft Edge</a>
+					<a href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+						style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">More info about Internet Explorer and Microsoft Edge</a>
+				</div>
+			</div>
+		</div>
+		<!-- liquid-tag banners global -->
+
+		<!-- site header -->
+		<header id="ms--site-header" data-test-id="site-header-wrapper" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+			<div id="ms--mobile-nav" class="site-header display-none-tablet padding-inline-none gap-none" data-bi-name="mobile-header" data-test-id="mobile-header"></div>
+			<div id="ms--primary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L1-header" data-test-id="primary-header"></div>
+			<div id="ms--secondary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L2-header" data-test-id="secondary-header"></div>
+		</header><div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container is-full  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile  is-gapless"><!-- .primary-holder -->
+			<section class="primary-holder column ">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps  is-gapless"><div id="main-column" class="column " data-main-column>
+
+						<main id="main" class="" role="main" data-bi-name="content" lang="en-us" dir="ltr"><div>
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" data-bi-name="contents-expand" data-contents-button hidden>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span><span class="contents-expand-title">Table of contents</span></button>
+							</div><!-- end mobile-contents button  -->
+
+							<div class="content "><!-- <content> --><section id="hero" class="hero  has-background-docs has-text-docs-invert hero-xs background-image-pattern background-size-200">
+	<div class="hero-content">
+		<h1 id="hero-title" class="title">MSIX documentation</h1>
+			<p id="hero-summary" class="margin-none padding-top-xs">MSIX is a Windows app package format that combines the best features of MSI, .appx, App-V, and ClickOnce to provide a modern and reliable packaging experience.</p>
+	</div>
+</section>
+
+	<section id="highlighted-content">
+		<div class="uhf-container padding-block-sm">
+<div class="columns is-multiline">
+		<div class="column is-6-tablet is-3-desktop">
+			<article class="card is-full-height position-relative">
+				<div class="card-content display-flex">
+					<div class="media align-items-stretch">
+						<div class="media-left display-none display-block-tablet">
+							<div class="image image-64x64 " aria-hidden="true">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" preserveAspectRatio="xMidYMin meet">			<g data-name="Layer 1">				<path fill="#acacac" d="M40.93 51.66L24.42 54.3V12.12l16.51-2.64v42.18z"></path>				<path fill-opacity=".3" fill="#e3e3e3" d="M57.71 53.19l-16.59-1.32-16.59 2.65-16.58-1.33V12.14l16.58 1.33 16.59-2.65 16.59 1.32v41.05z"></path>				<path d="M24.41 54.52h-.08l-17.2-1.38V10.76l17.23 1.37 16.58-2.65H41l17.2 1.37v42.39L41 51.87zM8.46 51.91l15.9 1.27 16.58-2.65H41l15.87 1.27V12.09L41 10.82l-16.59 2.65h-.08L8.46 12.19z" fill="#e3e3e3"></path>				<path d="M59.63 31.82a3 3 0 0 0-3-3A5.48 5.48 0 0 0 46.79 26h-.37a4.42 4.42 0 0 0-.48 8.81h11.1a3 3 0 0 0 2.59-2.99zm-34.02.79A3.61 3.61 0 0 0 22 29h-.06a6.6 6.6 0 0 0-11.81-3.41h-.44a5.33 5.33 0 0 0-.58 10.62h13.37a3.6 3.6 0 0 0 3.13-3.6z" fill="#fff" stroke="#e3e3e3" stroke-miterlimit="10"></path>				<circle cx="32.83" cy="32" r="10" class="fill-current-color" fill="#0079d6"></circle>				<path fill="#fff" d="M36.89 26.93l-5.64 4.02-2.48 6.48 5.64-4.03 2.48-6.47z"></path>			</g>		</svg>		
+							</div>
+						</div>
+						<div class="media-content">
+							<p class="card-supertitle margin-top-none margin-top-xs-tablet">Overview</p>
+							<a href="overview" class="card-title stretched-link has-external-link-indicator" data-linktype="relative-path">What is MSIX?</a>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="column is-6-tablet is-3-desktop">
+			<article class="card is-full-height position-relative">
+				<div class="card-content display-flex">
+					<div class="media align-items-stretch">
+						<div class="media-left display-none display-block-tablet">
+							<div class="image image-64x64 " aria-hidden="true">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" preserveAspectRatio="xMidYMin meet">			<g style="isolation:isolate">			  <g data-name="Layer 1">				<g opacity=".1">				  <path d="M52.51 52.38h-40.1a1.12 1.12 0 0 1-1.12-1.12V25a1.13 1.13 0 0 1 1.12-1.13h40.76a.47.47 0 0 1 .47.47v26.9a1.12 1.12 0 0 1-1.13 1.14z" opacity=".3" fill="#404040"></path>				</g>				<path d="M52.51 51.92h-40.1a1.12 1.12 0 0 1-1.12-1.12V24.56a1.13 1.13 0 0 1 1.12-1.13h40.76a.47.47 0 0 1 .47.47v26.9a1.12 1.12 0 0 1-1.13 1.12z" fill="#e3e3e3" opacity=".3"></path>				<path d="M12 23.11h41.64a.48.48 0 0 1 .48.48v27.5A1.15 1.15 0 0 1 53 52.25H12a1.15 1.15 0 0 1-1.15-1.15V24.26A1.15 1.15 0 0 1 12 23.11z" stroke="#c8c8c8" stroke-width="1.25" fill="none" stroke-miterlimit="10"></path>				<circle cx="32.5" cy="17.03" r="8.8" class="fill-current-color" fill="#0079d6"></circle>				<path fill="#c8c8c8" d="M4.46 51.72h56v2.5a1.56 1.56 0 0 1-1.56 1.56H6a1.56 1.56 0 0 1-1.56-1.56v-2.5h.02z"></path>				<path d="M32.5 12.26v8.09m3.04-3.05l-3.04 3.04-3.04-3.04" stroke="#fff" stroke-width="1.62" fill="none" stroke-miterlimit="10"></path>				<path fill="#c8c8c8" transform="rotate(180 32.405 37.675)" d="M20.6 35.78h23.61v3.8H20.6z"></path>				<path fill="#acacac" d="M28.35 35.78h16.16v3.8H28.35z"></path>			  </g>			</g>		</svg>		
+							</div>
+						</div>
+						<div class="media-content">
+							<p class="card-supertitle margin-top-none margin-top-xs-tablet">Download</p>
+							<a href="https://www.microsoft.com/p/msix-packaging-tool/9n5lw3jbcxkf" class="card-title stretched-link has-external-link-indicator" data-linktype="external">Get the MSIX Packaging Tool</a>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="column is-6-tablet is-3-desktop">
+			<article class="card is-full-height position-relative">
+				<div class="card-content display-flex">
+					<div class="media align-items-stretch">
+						<div class="media-left display-none display-block-tablet">
+							<div class="image image-64x64 " aria-hidden="true">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" preserveAspectRatio="xMidYMin meet">			<g data-name="Layer 1">				<path fill="none" d="M0 0h48v48H0z"></path>				<path d="M44.8 11.17v28.7a1.12 1.12 0 0 1-1 1.21h-36a1.12 1.12 0 0 1-1-1.21v-28a1.12 1.12 0 0 1 1-1.21h36.58a.46.46 0 0 1 .42.51z" fill="#e2e2e2" fill-opacity=".5"></path>				<path d="M41.61 8v2.6H7.75a1.12 1.12 0 0 0-1 1.2v25.68H4.1A1.11 1.11 0 0 1 3 36.37V8a1.11 1.11 0 0 1 1.1-1.08h36.4A1.1 1.1 0 0 1 41.61 8z" fill="#acacac"></path>				<path fill="#c8c8c8" d="M7.1 33.63h37.55A.36.36 0 0 1 45 34v5.72A1.33 1.33 0 0 1 43.68 41H8.07a1.33 1.33 0 0 1-1.33-1.33V34a.36.36 0 0 1 .36-.37z"></path>				<circle class="fill-current-color" cx="25.68" cy="22.67" r="5.25" fill="#0079d6"></circle>				<path d="M24.55 24v-2.85a.21.21 0 0 1 .31-.17l2.67 1.41a.21.21 0 0 1 0 .34l-2.67 1.41a.21.21 0 0 1-.31-.14z" fill="#fff"></path>				<path stroke="#acacac" stroke-miterlimit="10" stroke-width=".94" fill="none" d="M9.93 37.1h31.68"></path>				<path fill="#c8c8c8" d="M44 11.63v28.2a.35.35 0 0 1 0 .2H7.8a.35.35 0 0 1 0-.2v-28a.38.38 0 0 1 0-.2H44m.59-1H7.75a1.12 1.12 0 0 0-1 1.2v28a1.12 1.12 0 0 0 1 1.21H44a1.12 1.12 0 0 0 1-1.21v-28.7a.46.46 0 0 0-.42-.5z"></path>			</g>		</svg>		
+							</div>
+						</div>
+						<div class="media-content">
+							<p class="card-supertitle margin-top-none margin-top-xs-tablet">video</p>
+							<a href="resources" class="card-title stretched-link has-external-link-indicator" data-linktype="relative-path">MSIX resources and videos</a>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="column is-6-tablet is-3-desktop">
+			<article class="card is-full-height position-relative">
+				<div class="card-content display-flex">
+					<div class="media align-items-stretch">
+						<div class="media-left display-none display-block-tablet">
+							<div class="image image-64x64 " aria-hidden="true">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" preserveAspectRatio="xMidYMin meet">			<g data-name="Layer 1">				<path fill="#acacac" d="M40.93 51.66L24.42 54.3V12.12l16.51-2.64v42.18z"></path>				<path fill-opacity=".3" fill="#e3e3e3" d="M57.71 53.19l-16.59-1.32-16.59 2.65-16.58-1.33V12.14l16.58 1.33 16.59-2.65 16.59 1.32v41.05z"></path>				<path d="M24.41 54.52h-.08l-17.2-1.38V10.76l17.23 1.37 16.58-2.65H41l17.2 1.37v42.39L41 51.87zM8.46 51.91l15.9 1.27 16.58-2.65H41l15.87 1.27V12.09L41 10.82l-16.59 2.65h-.08L8.46 12.19z" fill="#e3e3e3"></path>				<path d="M59.63 31.82a3 3 0 0 0-3-3A5.48 5.48 0 0 0 46.79 26h-.37a4.42 4.42 0 0 0-.48 8.81h11.1a3 3 0 0 0 2.59-2.99zm-34.02.79A3.61 3.61 0 0 0 22 29h-.06a6.6 6.6 0 0 0-11.81-3.41h-.44a5.33 5.33 0 0 0-.58 10.62h13.37a3.6 3.6 0 0 0 3.13-3.6z" fill="#fff" stroke="#e3e3e3" stroke-miterlimit="10"></path>				<circle cx="32.83" cy="32" r="10" class="fill-current-color" fill="#0079d6"></circle>				<path fill="#fff" d="M36.89 26.93l-5.64 4.02-2.48 6.48 5.64-4.03 2.48-6.47z"></path>			</g>		</svg>		
+							</div>
+						</div>
+						<div class="media-content">
+							<p class="card-supertitle margin-top-none margin-top-xs-tablet">Overview</p>
+							<a href="https://techcommunity.microsoft.com/t5/MSIX/ct-p/MSIX" class="card-title stretched-link has-external-link-indicator" data-linktype="external">MSIX Tech Community</a>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+</div>
+		</div>
+	</section>
+
+
+
+
+	<section id="additional-content" class="padding-block-lg">
+		<div class="uhf-container anchor-headings">
+					<h2 class="margin-top-none margin-bottom-sm">Top tasks</h2>
+				<div class="columns is-multiline">
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height position-relative">
+								<div class="card-content">
+									<a href="customer-journey" class="card-title stretched-link has-external-link-indicator" data-linktype="relative-path">Learn about customer journeys with MSIX</a>
+									<p class="card-content-description">Read about how MSIX has improved customer deployments of Windows applications.</p>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height position-relative">
+								<div class="card-content">
+									<a href="packaging-tool/create-an-msix-overview" class="card-title stretched-link has-external-link-indicator" data-linktype="relative-path">Create MSIX packages from existing installers</a>
+									<p class="card-content-description">The MSIX Packaging Tool enables you to update existing desktop application packages to the MSIX format.</p>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height position-relative">
+								<div class="card-content">
+									<a href="desktop/source-code-overview" class="card-title stretched-link has-external-link-indicator" data-linktype="relative-path">Create MSIX packages from source code</a>
+									<p class="card-content-description">Package your desktop or UWP apps from source code</p>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height position-relative">
+								<div class="card-content">
+									<a href="msix-sdk/sdk-overview" class="card-title stretched-link has-external-link-indicator" data-linktype="relative-path">Use MSIX on any platform</a>
+									<p class="card-content-description">The MSIX SDK provides all of the APIs needed to verify, validate, and unpack an MSIX package on any platform, including non-Windows 10 platforms.</p>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height position-relative">
+								<div class="card-content">
+									<a href="app-installer/app-installer-root" class="card-title stretched-link has-external-link-indicator" data-linktype="relative-path">Install MSIX packages with App Installer</a>
+									<p class="card-content-description">Update or install any MSIX app package that is locally available or on any content distribution network.</p>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height position-relative">
+								<div class="card-content">
+									<a href="https://github.com/microsoft/MSIX-Labs" class="card-title stretched-link has-external-link-indicator" data-linktype="external">Learn about MSIX from hands-on-labs</a>
+									<p class="card-content-description">The MSIX Labs repo provides tutorials for creating, packaging, distributing and installing MSIX packages.</p>
+								</div>
+							</article>
+					</div>
+				</div>
+					<h2 class="margin-top-none margin-bottom-sm">MSIX for IT pros</h2>
+				<div class="columns is-multiline">
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Get started</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="packaging-tool/create-an-msix-overview" class="has-external-link-indicator" data-linktype="relative-path">
+													Create an MSIX package from an existing installer
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="packaging-tool/prepare-your-environment" class="has-external-link-indicator" data-linktype="relative-path">
+													Prepare your environment for conversion
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="packaging-tool/quick-create-vm" class="has-external-link-indicator" data-linktype="relative-path">
+													MSIX packaging environment on Hyper-V Quick Create
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="packaging-tool/remote-conversion-setup" class="has-external-link-indicator" data-linktype="relative-path">
+													Setup instructions for remote machine conversions
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Package</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="packaging-tool/tool-overview" class="has-external-link-indicator" data-linktype="relative-path">
+													MSIX Packaging Tool overview
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="packaging-tool/package-editor" class="has-external-link-indicator" data-linktype="relative-path">
+													Modify an MSIX package
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="packaging-tool/tool-best-practices" class="has-external-link-indicator" data-linktype="relative-path">
+													Best practices for MSIX package tool
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="package/sign-app-package-using-signtool" class="has-external-link-indicator" data-linktype="relative-path">
+													Sign an MSIX package
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Validate</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-debug" class="has-external-link-indicator" data-linktype="relative-path">
+													Run, debug, and test an MSIX package
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-test-windows-s" class="has-external-link-indicator" data-linktype="relative-path">
+													Test for Windows 10 in S mode
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="psf/package-support-framework" class="has-external-link-indicator" data-linktype="relative-path">
+													Create run time fixes for packaged apps
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-debug#test-your-app-using-local-app-attach" class="has-external-link-indicator" data-linktype="relative-path">
+													Test your app using Local App Attach
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Distribute</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/managing-your-msix-deployment-overview" class="has-external-link-indicator" data-linktype="relative-path">
+													Manage your MSIX deployment
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/managing-your-msix-deployment-enterprise" class="has-external-link-indicator" data-linktype="relative-path">
+													Distribute your MSIX in an enterprise environment
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/managing-your-msix-deployment-retail" class="has-external-link-indicator" data-linktype="relative-path">
+													Distribute your MSIX in a retail environment
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="manage/shared-package-container" class="has-external-link-indicator" data-linktype="relative-path">
+													Create a shared runtime container
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/app-attach-from-visualstudio" class="has-external-link-indicator" data-linktype="relative-path">
+													App Attach from Visual Studio
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Related resources</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="resources" class="has-external-link-indicator" data-linktype="relative-path">
+													MSIX resources and videos
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="toolkit/msix-toolkit-overview" class="has-external-link-indicator" data-linktype="relative-path">
+													MSIX Toolkit
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="https://github.com/microsoft/MSIX-Labs" class="has-external-link-indicator" data-linktype="external">
+													MSIX Labs
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+				</div>
+					<h2 class="margin-top-none margin-bottom-sm">MSIX for developers</h2>
+				<div class="columns is-multiline">
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Get started</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/source-code-overview" class="has-external-link-indicator" data-linktype="relative-path">
+													Package your desktop or UWP apps from source code
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-prepare" class="has-external-link-indicator" data-linktype="relative-path">
+													Prepare to package a desktop app
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-behind-the-scenes" class="has-external-link-indicator" data-linktype="relative-path">
+													Understanding how packaged desktop apps run on Windows
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/flexible-virtualization" class="has-external-link-indicator" data-linktype="relative-path">
+													Flexible virtualization
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Build</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-prepare" class="has-external-link-indicator" data-linktype="relative-path">
+													Prepare to package a desktop application
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-packaging-dot-net" class="has-external-link-indicator" data-linktype="relative-path">
+													Set up your desktop application for MSIX packaging in Visual Studio
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="package/packaging-uwp-apps" class="has-external-link-indicator" data-linktype="relative-path">
+													Package a desktop or UWP app in Visual Studio
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="package/manual-packaging-root" class="has-external-link-indicator" data-linktype="relative-path">
+													Package from the command line
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="package/sign-app-package-using-signtool" class="has-external-link-indicator" data-linktype="relative-path">
+													Sign an MSIX package
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Validate</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-debug" class="has-external-link-indicator" data-linktype="relative-path">
+													Run, debug, and test an MSIX package
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="/en-us/windows/uwp/debug-test-perf/windows-app-certification-kit" class="has-external-link-indicator" data-linktype="absolute-path">
+													Windows App Certification Kit
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="/en-us/windows/uwp/publish/package-flights" class="has-external-link-indicator" data-linktype="absolute-path">
+													Package flighting
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/desktop-to-uwp-test-windows-s" class="has-external-link-indicator" data-linktype="relative-path">
+													Test for Windows 10 in S mode
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Distribute</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/managing-your-msix-deployment-overview" class="has-external-link-indicator" data-linktype="relative-path">
+													Manage your MSIX deployment
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/managing-your-msix-deployment-enterprise" class="has-external-link-indicator" data-linktype="relative-path">
+													Distribute your MSIX in an enterprise environment
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="desktop/managing-your-msix-deployment-retail" class="has-external-link-indicator" data-linktype="relative-path">
+													Distribute your MSIX in a retail environment
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">API and schema reference</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="/en-us/uwp/api/windows.management.deployment" class="has-external-link-indicator" data-linktype="absolute-path">
+													Package Manager API
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="/en-us/uwp/schemas/appxpackage/appx-package-manifest" class="has-external-link-indicator" data-linktype="absolute-path">
+													App manifest schema
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="/en-us/uwp/schemas/appinstallerschema/schema-root" class="has-external-link-indicator" data-linktype="absolute-path">
+													App Installer file schema
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+					<div class="column is-4-tablet is-4-desktop">
+							<article class="card is-full-height">
+								<div class="card-content">
+									<p class="card-title color-text font-size-lg">Related resources</p>
+									<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xs">
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="resources" class="has-external-link-indicator" data-linktype="relative-path">
+													MSIX resources and videos
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="partners" class="has-external-link-indicator" data-linktype="relative-path">
+													MSIX partners
+												</a>
+											</li>
+											<li class="is-unstyled margin-bottom-xxs font-size-sm">
+												<a href="https://github.com/microsoft/msix-packaging/" class="has-external-link-indicator" data-linktype="external">
+													MSIX SDK
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+					</div>
+				</div>
+		</div>
+	</section>
+</div><div id="assertive-live-region" role="alert" aria-live="assertive" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<div id="polite-live-region" role="status" aria-live="polite" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<!-- </content> -->
+
+						</main><!-- recommendations section --><!-- end recommendations section -->
+
+						<!-- feedback section --><!-- end feedback section -->
+
+						<!-- feedback report section --><!-- end feedback report section --><div class="border-top is-visible-interactive has-default-focus margin-top-sm  margin-top-none"><footer id="footer-interactive" data-bi-name="footer" class="footer-layout"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>&copy; Microsoft 2025</li>
+	</ul>
+</footer></div></div></div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm  margin-top-none"><footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>&copy; Microsoft 2025</li>
+	</ul>
+</footer>
+
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>
+
