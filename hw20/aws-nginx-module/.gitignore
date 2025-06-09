@@ -1,0 +1,15 @@
+# Игнорирование кеша Terraform
+.terraform/
+
+# Игнорирование провайдеров Terraform
+.terraform/providers/
+
+# Игнорирование Terraform state-файлов
+*.tfstate
+*.tfstate.backup
+
+# Игнорирование SSH-ключей (чтобы их не коммитить)
+*.pem
+
+# Игнорирование логов и временных файлов
+*.log
