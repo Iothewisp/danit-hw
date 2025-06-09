@@ -1,5 +1,5 @@
 resource "aws_security_group" "web_sg" {
-  vpc_id = aws_vpc.main_vpc.id
+  vpc_id = var.vpc_id 
   egress {
     from_port   = 0
     to_port     = 0
