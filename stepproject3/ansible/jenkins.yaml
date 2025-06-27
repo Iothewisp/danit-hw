@@ -1,0 +1,71 @@
+- name: Установка Jenkins и Nginx
+  hosts: jenkins
+  become: true
+
+  tasks:
+    - name: Обновление пакетов
+      apt:
+        update_cache: yes
+
+    - name: Установка Java (Jenkins зависим от Java)
+      apt:
+        name: openjdk-11-jdk
+        state: present
+
+    - name: Добавление репозитория Jenkins
+      apt_key:
+        url: https://pkg.jenkins.io/debian/jenkins.io.key
+        state: present
+
+    - name: Добавление Jenkins в sources.list
+      apt_repository:
+        repo: deb https://pkg.jenkins.io/debian binary/
+        state: present
+
+    - name: Установка Jenkins
+      apt:
+        name: jenkins
+        update_cache: yes
+        state: present
+
+    - name: Запуск и включение Jenkins
+      service:
+        name: jenkins
+        state: started
+        enabled: true
+
+    - name: Установка nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Настройка nginx как reverse proxy
+      copy:
+        dest: /etc/nginx/sites-available/jenkins
+        content: |
+          server {
+              listen 80;
+              location / {
+                  proxy_pass http://localhost:8080;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              }
+          }
+
+    - name: Активация конфигурации Jenkins nginx
+      file:
+        src: /etc/nginx/sites-available/jenkins
+        dest: /etc/nginx/sites-enabled/jenkins
+        state: link
+        force: true
+
+    - name: Удаление дефолтного сайта
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: Перезапуск nginx
+      service:
+        name: nginx
+        state: restarted
