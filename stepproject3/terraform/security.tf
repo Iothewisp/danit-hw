@@ -2,7 +2,7 @@
 resource "aws_security_group" "webserver_sg" {
   name        = "webseekersecure.sg"
   description = "Security group for webservers"
-  vpc_id      = module.network.vpc_id  
+  vpc_id      = aws_vpc.main.id 
 
   ingress {
     from_port   = 22

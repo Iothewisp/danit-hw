@@ -18,30 +18,30 @@ output "jenkins_master_name_tag" {
   value       = aws_instance.jenkins_master.tags["Name"]
 }
 
-output "jenkins_worker_private_ip" {
-  description = "Приватный IP Jenkins Worker — используется внутри VPC и для Ansible"
-  value       = aws_instance.jenkins_worker.private_ip
-}
+# output "jenkins_worker_private_ip" {
+#   description = "Приватный IP Jenkins Worker — используется внутри VPC и для Ansible"
+#   value       = aws_instance.jenkins_worker.private_ip
+# }
 
-output "jenkins_inventory" {
-  description = "Готовый блок inventory для Ansible"
-  value = <<EOT
-[master]
-${aws_instance.jenkins_master.public_ip}
+# output "jenkins_inventory" {
+#   description = "Готовый блок inventory для Ansible"
+#   value = <<EOT
+# [master]
+# ${aws_instance.jenkins_master.public_ip}
 
-[worker]
-${aws_instance.jenkins_worker.private_ip}
-EOT
-}
+# [worker]
+# ${aws_instance.jenkins_worker.private_ip}
+# EOT
+# }
 
 output "public_subnet_id" {
   description = "ID публичной подсети — размещение Jenkins Master"
-  value       = module.network.public_subnet_id
+  value       = aws_subnet.public.id
 }
 
 output "private_subnet_id" {
   description = "ID приватной подсети — размещение Jenkins Worker"
-  value       = module.network.private_subnet_id
+  value       = aws_subnet.private.id
 }
 
 output "webserver_sg_id" {

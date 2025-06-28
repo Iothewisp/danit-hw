@@ -1,0 +1,21 @@
+# Локальная база данных состояния
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# План и лог
+*.tfplan
+crash.log
+
+# Переменные и чувствительные данные
+*.tfvars
+*.tfvars.json
+
+# Файлы IDE и ОС
+*.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Установленные провайдеры
+.terraform.lock.hcl

@@ -1,15 +1,23 @@
 provider "aws" {
   region = "eu-central-1"
 }
-
 # 🏗 Создание VPC
 resource "aws_vpc" "main_vpc" {
   cidr_block = "10.0.0.0/16"
-
+  instance_tenancy     = "default"
+  enable_dns_hostnames = true
   tags = {
     Name = "webseekersVPC"
   }
 }
+# # 🏗 Создание VPC
+# resource "aws_vpc" "main_vpc" {
+#   cidr_block = "10.0.0.0/16"
+
+#   tags = {
+#     Name = "webseekersVPC"
+#   }
+# }
 
 # 🌐 Публичная Subnet
 resource "aws_subnet" "public_subnet" {
