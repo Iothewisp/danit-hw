@@ -100,35 +100,35 @@ output "jenkins_ssh_commands" {
 
 
 # Фитча тест автопут pem ключа в мастер для Linux 
-resource "null_resource" "copy_ssh_key_to_master" {
-  provisioner "file" {
-    source      = "/home/lexan/.ssh/webseeker_key.pem"
-    destination = "/home/ubuntu/webseeker_key.pem"
+# resource "null_resource" "copy_ssh_key_to_master" {
+#   provisioner "file" {
+#     source      = "/home/lexan/.ssh/webseeker_key.pem"
+#     destination = "/home/ubuntu/webseeker_key.pem"
 
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      host        = aws_instance.jenkins_master.public_ip
-      private_key = file("/home/lexan/.ssh/webseeker_key.pem")
-    }
-  }
+#     connection {
+#       type        = "ssh"
+#       user        = "ubuntu"
+#       host        = aws_instance.jenkins_master.public_ip
+#       private_key = file("/home/lexan/.ssh/webseeker_key.pem")
+#     }
+#   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "chmod 400 /home/ubuntu/webseeker_key.pem",
-      "mkdir -p ~/.ssh && mv /home/ubuntu/webseeker_key.pem ~/.ssh/"
-    ]
+#   provisioner "remote-exec" {
+#     inline = [
+#       "chmod 400 /home/ubuntu/webseeker_key.pem",
+#       "mkdir -p ~/.ssh && mv /home/ubuntu/webseeker_key.pem ~/.ssh/"
+#     ]
 
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      host        = aws_instance.jenkins_master.public_ip
-      private_key = file("/home/lexan/.ssh/webseeker_key.pem")
-    }
-  }
+#     connection {
+#       type        = "ssh"
+#       user        = "ubuntu"
+#       host        = aws_instance.jenkins_master.public_ip
+#       private_key = file("/home/lexan/.ssh/webseeker_key.pem")
+#     }
+#   }
 
-  depends_on = [aws_instance.jenkins_master]
-}
+#   depends_on = [aws_instance.jenkins_master]
+# }
 
 
 # # Аутоматизайшон Технолоджиа передачи айпи инстаносов сразу в playbook Ansible
@@ -142,18 +142,19 @@ resource "null_resource" "copy_ssh_key_to_master" {
 # ${aws_instance.jenkins_worker.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/home/lexan/.ssh/webseeker_key.pem
 # EOT
 # }
+
 # # Этот блок создает inventory для Ansible с IP-адресами Jenkins Master и Worker
 
-resource "local_file" "ansible_inventory" {
-  filename = "${path.module}/../ansible/inventory.ini"
-  content  = <<EOT
-[jenkins_master]
-${aws_instance.jenkins_master.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/home/lexan/.ssh/webseeker_key.pem
+# resource "local_file" "ansible_inventory" {
+#   filename = "${path.module}/../ansible/inventory.ini"
+#   content  = <<EOT
+# [jenkins_master]
+# ${aws_instance.jenkins_master.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/home/lexan/.ssh/webseeker_key.pem
 
-[jenkins_worker]
-${aws_instance.jenkins_worker.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/home/lexan/.ssh/webseeker_key.pem
-EOT
-}
+# [jenkins_worker]
+# ${aws_instance.jenkins_worker.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/home/lexan/.ssh/webseeker_key.pem
+# EOT
+# }
 
 
 

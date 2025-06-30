@@ -1,6 +1,6 @@
 
 # P.S. я ПОНЯЛ что так можно , я пока реализовал эту задачу 
-# через null resource по другому в файле оутпутс 
+# через null resource по другому в файле null_resource.tf
 
 # useradd -m -s /bin/bash webseeker
 

@@ -1,0 +1,146 @@
+Started by user Lexan
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on workerjenkins in /home/ubuntu/workerjenkins/workspace/пайплайн со степа 2
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Code)
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 7a61aed2f042449d4b4a8e8d5b98073335d4d741 (refs/remotes/origin/main)
+Commit message: "Update Dockerfile old original"
+ > git rev-parse --resolve-git-dir /home/ubuntu/workerjenkins/workspace/пайплайн со степа 2/.git # timeout=10
+ > git config remote.origin.url https://github.com/Iothewisp/steppr2.git # timeout=10
+Fetching upstream changes from https://github.com/Iothewisp/steppr2.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/Iothewisp/steppr2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7a61aed2f042449d4b4a8e8d5b98073335d4d741 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 7a61aed2f042449d4b4a8e8d5b98073335d4d741 # timeout=10
+ > git rev-list --no-walk 7a61aed2f042449d4b4a8e8d5b98073335d4d741 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] echo
+📦 Собираем Docker образ: webseeker13/nodjs:latest
+[Pipeline] sh
++ docker build -t webseeker13/nodjs:latest .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  80.38kB
+
+Step 1/8 : FROM node:14
+ ---> 1d12470fa662
+Step 2/8 : WORKDIR /app
+ ---> Using cache
+ ---> 324900b008e5
+Step 3/8 : COPY package*.json ./
+ ---> Using cache
+ ---> 164f7925a2f9
+Step 4/8 : RUN npm install
+ ---> Using cache
+ ---> c2cba6acedb3
+Step 5/8 : COPY . .
+ ---> d6faf400fd18
+Step 6/8 : EXPOSE 3000
+ ---> Running in 91085cdc9156
+ ---> Removed intermediate container 91085cdc9156
+ ---> 50eef951b1f8
+Step 7/8 : ENTRYPOINT ["npm"]
+ ---> Running in 5c9d30530276
+ ---> Removed intermediate container 5c9d30530276
+ ---> c5788852a765
+Step 8/8 : CMD ["start"]
+ ---> Running in 738a4a355396
+ ---> Removed intermediate container 738a4a355396
+ ---> 437b8c07b226
+Successfully built 437b8c07b226
+Successfully tagged webseeker13/nodjs:latest
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push to Docker Hub)
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASS
+[Pipeline] {
+[Pipeline] echo
+📤 Пушим образ в Docker Hub
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [DOCKER_PASS]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ echo ****
++ docker login -u webseeker13 --password-stdin
+WARNING! Your password will be stored unencrypted in /home/ubuntu/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
++ docker push webseeker13/nodjs:latest
+The push refers to repository [docker.io/webseeker13/nodjs]
+f724df565514: Preparing
+6c0db12cad09: Preparing
+f64cb57598c2: Preparing
+e56ab702868d: Preparing
+0d5f5a015e5d: Preparing
+3c777d951de2: Preparing
+f8a91dd5fc84: Preparing
+cb81227abde5: Preparing
+e01a454893a9: Preparing
+c45660adde37: Preparing
+fe0fb3ab4a0f: Preparing
+f1186e5061f2: Preparing
+b2dba7477754: Preparing
+3c777d951de2: Waiting
+f8a91dd5fc84: Waiting
+cb81227abde5: Waiting
+e01a454893a9: Waiting
+c45660adde37: Waiting
+fe0fb3ab4a0f: Waiting
+f1186e5061f2: Waiting
+b2dba7477754: Waiting
+0d5f5a015e5d: Mounted from library/node
+e56ab702868d: Pushed
+f64cb57598c2: Pushed
+f724df565514: Pushed
+3c777d951de2: Mounted from library/node
+f8a91dd5fc84: Mounted from library/node
+cb81227abde5: Mounted from library/node
+e01a454893a9: Mounted from library/node
+c45660adde37: Mounted from library/node
+fe0fb3ab4a0f: Mounted from library/node
+f1186e5061f2: Mounted from library/node
+6c0db12cad09: Pushed
+b2dba7477754: Mounted from library/node
+latest: digest: sha256:e093fb469fbf23bede16882fe09a09ff97e5b5661ca1a09d1a1b5359a20d00be size: 3049
++ docker logout
+Removing login credentials for https://index.docker.io/v1/
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+🧹 Уборка завершена. Воркер свободен.
+[Pipeline] echo
+✅ Образ собран и загружен в Docker Hub!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

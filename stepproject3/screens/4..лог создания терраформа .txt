@@ -1,0 +1,604 @@
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:   
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_eip.nateip will be created
+  + resource "aws_eip" "nateip" {
+      + allocation_id        = (known after apply)
+      + arn                  = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = "vpc"
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + ipam_pool_id         = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + ptr_record           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "Name" = "nat_eip_1webseeker"
+        }
+      + tags_all             = {
+          + "Name" = "nat_eip_1webseeker"
+        }
+      + vpc                  = (known after apply)
+    }
+
+  # aws_instance.jenkins_master will be created
+  + resource "aws_instance" "jenkins_master" {
+      + ami                                  = "ami-0ef7e778d25af6645"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = true
+      + availability_zone                    = (known after apply)
+      + cpu_core_count                       = (known after apply)
+      + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t2.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "webseeker_key"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Environment" = "DevOps"
+          + "Name"        = "Jenkins-Master"
+          + "Owner"       = "Webseeker"
+          + "Role"        = "Jenkins"
+        }
+      + tags_all                             = {
+          + "Environment" = "DevOps"
+          + "Name"        = "Jenkins-Master"
+          + "Owner"       = "Webseeker"
+          + "Role"        = "Jenkins"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = (known after apply)
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+    }
+
+  # aws_instance.jenkins_worker will be created
+  + resource "aws_instance" "jenkins_worker" {
+      + ami                                  = "ami-0ef7e778d25af6645"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + cpu_core_count                       = (known after apply)
+      + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t2.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "webseeker_key"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Environment" = "DevOps"
+          + "Name"        = "Jenkins-Worker"
+          + "Owner"       = "Webseeker"
+          + "Role"        = "Worker"
+        }
+      + tags_all                             = {
+          + "Environment" = "DevOps"
+          + "Name"        = "Jenkins-Worker"
+          + "Owner"       = "Webseeker"
+          + "Role"        = "Worker"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = (known after apply)
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options {
+          + market_type = "spot"
+
+          + spot_options (known after apply)
+        }
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+    }
+
+  # aws_internet_gateway.igw will be created
+  + resource "aws_internet_gateway" "igw" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "Name" = "webseeker-igw"
+        }
+      + tags_all = {
+          + "Name" = "webseeker-igw"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_nat_gateway.nat will be created
+  + resource "aws_nat_gateway" "nat" {
+      + allocation_id                      = (known after apply)
+      + association_id                     = (known after apply)
+      + connectivity_type                  = "public"
+      + id                                 = (known after apply)
+      + network_interface_id               = (known after apply)
+      + private_ip                         = (known after apply)
+      + public_ip                          = (known after apply)
+      + secondary_private_ip_address_count = (known after apply)
+      + secondary_private_ip_addresses     = (known after apply)
+      + subnet_id                          = (known after apply)
+      + tags                               = {
+          + "Name" = "webseeker-nat"
+        }
+      + tags_all                           = {
+          + "Name" = "webseeker-nat"
+        }
+    }
+
+  # aws_route.internet_access will be created
+  + resource "aws_route" "internet_access" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + gateway_id             = (known after apply)
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+    }
+
+  # aws_route.private_to_nat will be created
+  + resource "aws_route" "private_to_nat" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + nat_gateway_id         = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+    }
+
+  # aws_route_table.private will be created
+  + resource "aws_route_table" "private" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = (known after apply)
+      + tags             = {
+          + "Name" = "webseeker-rt-private"
+        }
+      + tags_all         = {
+          + "Name" = "webseeker-rt-private"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table.public will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = (known after apply)
+      + tags             = {
+          + "Name" = "webseeker-rt-public"
+        }
+      + tags_all         = {
+          + "Name" = "webseeker-rt-public"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table_association.private will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_route_table_association.public will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_security_group.webserver_sg will be created
+  + resource "aws_security_group" "webserver_sg" {
+      + arn                    = (known after apply)
+      + description            = "Security group for Jenkins Master and Worker"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "All outbound traffic"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "HTTP access (port 80)"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Jenkins Web UI"
+              + from_port        = 8080
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 8080
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "SSH from internet (Master only)"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+        ]
+      + name                   = "webseekersecure.sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "webseekersSG"
+        }
+      + tags_all               = {
+          + "Name" = "webseekersSG"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group_rule.allow_ssh_between_master_and_worker will be created
+  + resource "aws_security_group_rule" "allow_ssh_between_master_and_worker" {
+      + description              = "SSH Master to Worker (same SG)"
+      + from_port                = 22
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + security_group_id        = (known after apply)
+      + security_group_rule_id   = (known after apply)
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 22
+      + type                     = "ingress"
+    }
+
+  # aws_subnet.private will be created
+  + resource "aws_subnet" "private" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "eu-central-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.2.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "Name" = "webseeker-subnet-private"
+        }
+      + tags_all                                       = {
+          + "Name" = "webseeker-subnet-private"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_subnet.public will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "eu-central-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "Name" = "webseeker-subnet-public"
+        }
+      + tags_all                                       = {
+          + "Name" = "webseeker-subnet-public"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_vpc.main will be created
+  + resource "aws_vpc" "main" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.0.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + tags                                 = {
+          + "Environment" = "DevOpsLab"
+          + "Name"        = "webseeker-vpc"
+          + "Owner"       = "Webseeker"
+        }
+      + tags_all                             = {
+          + "Environment" = "DevOpsLab"
+          + "Name"        = "webseeker-vpc"
+          + "Owner"       = "Webseeker"
+        }
+    }
+
+  # local_file.ansible_inventory will be created
+  + resource "local_file" "ansible_inventory" {
+      + content              = (known after apply)
+      + content_base64sha256 = (known after apply)
+      + content_base64sha512 = (known after apply)
+      + content_md5          = (known after apply)
+      + content_sha1         = (known after apply)
+      + content_sha256       = (known after apply)
+      + content_sha512       = (known after apply)
+      + directory_permission = "0777"
+      + file_permission      = "0777"
+      + filename             = "./../ansible/inventory.ini"
+      + id                   = (known after apply)
+    }
+
+  # null_resource.copy_ssh_key_to_master will be created
+  + resource "null_resource" "copy_ssh_key_to_master" {
+      + id = (known after apply)
+    }
+
+Plan: 18 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + jenkins_inventory            = (known after apply)
+  + jenkins_master_instance_id   = (known after apply)
+  + jenkins_master_instance_type = "t2.micro"
+  + jenkins_master_name_tag      = "Jenkins-Master"
+  + jenkins_master_public_ip     = (known after apply)
+  + jenkins_ssh_commands         = {
+      + master = (known after apply)
+      + worker = (known after apply)
+    }
+  + jenkins_worker_private_ip    = (known after apply)
+  + private_subnet_id            = (known after apply)
+  + public_subnet_id             = (known after apply)
+  + webserver_sg_id              = (known after apply)
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_eip.nateip: Creating...
+aws_vpc.main: Creating...
+aws_eip.nateip: Creation complete after 1s [id=eipalloc-0ca397696fd455736]
+aws_vpc.main: Still creating... [00m07s elapsed]
+aws_vpc.main: Creation complete after 9s [id=vpc-00a5d6e5b7291dce0]
+aws_internet_gateway.igw: Creating...
+aws_subnet.public: Creating...
+aws_subnet.private: Creating...
+aws_route_table.private: Creating...
+aws_route_table.public: Creating...
+aws_security_group.webserver_sg: Creating...
+aws_internet_gateway.igw: Creation complete after 1s [id=igw-04f9e8588c01d19a9]
+aws_subnet.private: Creation complete after 1s [id=subnet-068cab7ba57a0984d]
+aws_route_table.public: Creation complete after 1s [id=rtb-04ee4026dfc0f908e]
+aws_route.internet_access: Creating...
+aws_route_table.private: Creation complete after 1s [id=rtb-01286e37ccf1a4c3e]
+aws_route_table_association.private: Creating...
+aws_route_table_association.private: Creation complete after 0s [id=rtbassoc-00157a50eac6f11fe]
+aws_route.internet_access: Creation complete after 1s [id=r-rtb-04ee4026dfc0f908e1080289494]
+aws_security_group.webserver_sg: Creation complete after 2s [id=sg-0e31d813593c580a1]
+aws_security_group_rule.allow_ssh_between_master_and_worker: Creating...
+aws_instance.jenkins_worker: Creating...
+aws_security_group_rule.allow_ssh_between_master_and_worker: Creation complete after 1s [id=sgrule-1458598264]
+aws_subnet.public: Still creating... [00m10s elapsed]
+aws_subnet.public: Creation complete after 11s [id=subnet-0b0ee6b0b615ecc90]
+aws_route_table_association.public: Creating...
+aws_nat_gateway.nat: Creating...
+aws_instance.jenkins_master: Creating...
+aws_route_table_association.public: Creation complete after 0s [id=rtbassoc-02e3f527c49d4c373]
+aws_instance.jenkins_worker: Still creating... [00m10s elapsed]
+aws_nat_gateway.nat: Still creating... [00m10s elapsed]
+aws_instance.jenkins_master: Still creating... [00m10s elapsed]
+aws_instance.jenkins_worker: Still creating... [00m20s elapsed]
+aws_instance.jenkins_worker: Creation complete after 23s [id=i-09020699f21cf857b]
+aws_nat_gateway.nat: Still creating... [00m17s elapsed]
+aws_instance.jenkins_master: Still creating... [00m18s elapsed]
+aws_nat_gateway.nat: Still creating... [00m27s elapsed]
+aws_instance.jenkins_master: Still creating... [00m28s elapsed]
+aws_instance.jenkins_master: Creation complete after 30s [id=i-050fc1aec52218998]
+null_resource.copy_ssh_key_to_master: Creating...
+null_resource.copy_ssh_key_to_master: Provisioning with 'file'...
+local_file.ansible_inventory: Creating...
+local_file.ansible_inventory: Creation complete after 0s [id=0e00077c1bd871e42525594f8ed89832b6280f31]
+aws_nat_gateway.nat: Still creating... [00m38s elapsed]
+null_resource.copy_ssh_key_to_master: Still creating... [00m10s elapsed]
+null_resource.copy_ssh_key_to_master: Provisioning with 'remote-exec'...
+null_resource.copy_ssh_key_to_master (remote-exec): Connecting to remote host via SSH...
+null_resource.copy_ssh_key_to_master (remote-exec):   Host: 3.79.239.149
+null_resource.copy_ssh_key_to_master (remote-exec):   User: ubuntu
+null_resource.copy_ssh_key_to_master (remote-exec):   Password: false
+null_resource.copy_ssh_key_to_master (remote-exec):   Private key: true
+null_resource.copy_ssh_key_to_master (remote-exec):   Certificate: false
+null_resource.copy_ssh_key_to_master (remote-exec):   SSH Agent: false
+null_resource.copy_ssh_key_to_master (remote-exec):   Checking Host Key: false
+null_resource.copy_ssh_key_to_master (remote-exec):   Target Platform: unix
+null_resource.copy_ssh_key_to_master (remote-exec): Connected!
+null_resource.copy_ssh_key_to_master: Creation complete after 15s [id=7248181625397859767]
+aws_nat_gateway.nat: Still creating... [00m45s elapsed]
+aws_nat_gateway.nat: Still creating... [00m55s elapsed]
+aws_nat_gateway.nat: Still creating... [01m05s elapsed]
+aws_nat_gateway.nat: Still creating... [01m13s elapsed]
+aws_nat_gateway.nat: Still creating... [01m23s elapsed]
+aws_nat_gateway.nat: Creation complete after 1m27s [id=nat-0448d4a80879507df]
+aws_route.private_to_nat: Creating...
+aws_route.private_to_nat: Creation complete after 1s [id=r-rtb-01286e37ccf1a4c3e1080289494]
+
+Apply complete! Resources: 18 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+jenkins_inventory = <<EOT
+[master]
+3.79.239.149
+
+[worker]
+10.0.2.173
+
+EOT
+jenkins_master_instance_id = "i-050fc1aec52218998"
+jenkins_master_instance_type = "t2.micro"
+jenkins_master_name_tag = "Jenkins-Master"
+jenkins_master_public_ip = "3.79.239.149"
+jenkins_ssh_commands = {
+  "master" = "ssh -i \"C:/Users/lexan/.ssh/webseeker_key.pem\" ubuntu@3.79.239.149"
+  "worker" = "ssh -i \"C:/Users/lexan/.ssh/webseeker_key.pem\" -J ubuntu@3.79.239.149 ubuntu@10.0.2.173"
+}
+jenkins_worker_private_ip = "10.0.2.173"
+private_subnet_id = "subnet-068cab7ba57a0984d"
+public_subnet_id = "subnet-0b0ee6b0b615ecc90"
+webserver_sg_id = "sg-0e31d813593c580a1"
