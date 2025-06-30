@@ -1,0 +1,94 @@
+---
+- name: Install Jenkins with Nginx reverse proxy
+  hosts: jenkins_master
+  become: true
+
+  vars:
+    jenkins_repo_key_url: https://pkg.jenkins.io/debian/jenkins.io.key
+    jenkins_repo: "deb https://pkg.jenkins.io/debian-stable binary/"
+
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install dependencies
+      apt:
+        name:
+          - openjdk-17-jdk
+          - gnupg2
+          - curl
+        state: present
+
+    - name: Add Jenkins repo GPG key
+      apt_key:
+        url: "{{ jenkins_repo_key_url }}"
+        state: present
+
+    - name: Add Jenkins apt repository
+      apt_repository:
+        repo: "{{ jenkins_repo }}"
+        state: present
+
+    - name: Install Jenkins
+      apt:
+        name: jenkins
+        state: present
+        update_cache: yes
+
+    - name: Ensure Jenkins is running
+      service:
+        name: jenkins
+        state: started
+        enabled: yes
+
+    - name: Allow Jenkins port 8080 in ufw
+      ufw:
+        rule: allow
+        port: '8080'
+        proto: tcp
+      when: ansible_facts['distribution'] == 'Ubuntu'
+
+    # ---------------------------
+    # NGINX REVERSE PROXY SECTION
+    # ---------------------------
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Create Nginx config for Jenkins
+      copy:
+        dest: /etc/nginx/sites-available/jenkins
+        content: |
+          server {
+              listen 80;
+              server_name _;
+
+              location / {
+                  proxy_pass http://localhost:8080;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+              }
+          }
+
+    - name: Enable Nginx site
+      file:
+        src: /etc/nginx/sites-available/jenkins
+        dest: /etc/nginx/sites-enabled/jenkins
+        state: link
+        force: true
+
+    - name: Remove default Nginx site
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
