@@ -7,7 +7,4 @@ variable "instance_type" {
   description = "Тип EC2-инстанса, например t2.micro или t3.small"
   default     = "t2.micro"
 }
-variable "key_name" {
-  description = "Имя существующей AWS EC2 Key Pair"
-  default     = "webseeker_key"
-}
+
