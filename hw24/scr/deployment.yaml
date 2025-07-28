@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: danit-randomstring-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: danit-randomstring
+  template:
+    metadata:
+      labels:
+        app: danit-randomstring
+    spec:
+      containers:
+      - name: random-server
+        image: webseeker13/random-server:latest
+        ports:
+        - containerPort: 8082
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
