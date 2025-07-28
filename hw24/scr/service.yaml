@@ -7,6 +7,6 @@ spec:
   selector:
     app: danit-randomstring
   ports:
-    - port: 3000          # порт внутри кластера
-      targetPort: 8082    # порт внутри контейнера
-      nodePort: 30007     # наружный порт (Minikube или VM)
+    - port: 3000          
+      targetPort: 8082    
+      nodePort: 30007     
