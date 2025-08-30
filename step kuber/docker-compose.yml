@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: flask-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: shop
+      MYSQL_USER: petshop
+      MYSQL_PASSWORD: 12345qaz
+    ports:
+      - "3306:3306"
+
+  flask:
+    build: .
+    container_name: flask-shop
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: flask-mysql
+      DB_USER: petshop
+      DB_PASSWORD: 12345qaz
+      DB_NAME: shop
+    ports:
+      - "5000:5000"

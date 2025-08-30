@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Pet | PetShop CLI</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff99;
+      font-family: monospace;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 48px auto;
+      padding: 24px;
+      background-color: #111;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #ff6600;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ff99;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 4px;
+      color: #ffcc99;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      background-color: #222;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      font-family: monospace;
+    }
+
+    button {
+      margin-top: 24px;
+      padding: 10px 16px;
+      background-color: #222;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      font-size: 14px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .error {
+      color: #ff4444;
+      background-color: #330000;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .success {
+      color: #00ff99;
+      background-color: #003322;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      color: #ffcc99;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .ascii {
+      text-align: center;
+      font-size: 12px;
+      color: #00ff99;
+      white-space: pre;
+      margin-top: 32px;
+    }
+
+    .banner {
+      display: block;
+      margin: 32px auto 0;
+      max-width: 100%;
+      width: 300px;
+      border-radius: 12px;
+      border: 2px dashed #00ff99;
+      box-shadow: 0 0 12px #ff6600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Add a New Pet</h1>
+
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if success %}
+      <p class="success">{{ success }}</p>
+    {% endif %}
+
+    <form method="POST">
+      <label for="name">Pet Name:</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="price">Price:</label>
+      <input type="number" name="price" id="price" required>
+
+      <button type="submit">Add Pet</button>
+    </form>
+
+    <img src="/static/images/possum.jpeg" alt="Possum Banner" class="banner">
+
+    <a href="/">← Back to Home</a>
+  </div>
+
+  <div class="ascii">
+    ┌─────────────────────────────┐<br>
+    │  PetShop CLI: Add a Friend  │<br>
+    └─────────────────────────────┘
+  </div>
+
+</body>
+</html>

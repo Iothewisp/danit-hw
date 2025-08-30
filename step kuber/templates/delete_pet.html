@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PetShop CLI — Purge a Soul</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff99;
+      font-family: monospace;
+      padding: 32px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      border: 2px dashed #00ff99;
+      padding: 24px;
+      box-shadow: 0 0 12px #ff6600;
+    }
+    h1 {
+      color: #ff6600;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    label, input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    input {
+      padding: 8px;
+      background-color: #111;
+      color: #00ff99;
+      border: 1px solid #00ff99;
+    }
+    button {
+      padding: 10px;
+      background-color: #ff6600;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .ascii {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 14px;
+      color: #ff6600;
+    }
+    .banner {
+      display: block;
+      margin: 24px auto;
+      max-width: 100%;
+      width: 300px;
+      border-radius: 12px;
+      border: 2px dashed #00ff99;
+      box-shadow: 0 0 12px #ff6600;
+    }
+    a {
+      color: #00ff99;
+      text-decoration: none;
+      display: block;
+      margin-top: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Delete a Pet</h1>
+
+    <form method="POST">
+      <label for="id">Pet ID:</label>
+      <input type="number" name="id" id="id" required>
+
+      <button type="submit">Delete Pet</button>
+    </form>
+
+    <img src="/static/images/Bear.jpeg" alt="Bear Banner" class="banner">
+
+    <div class="ascii">
+      Purge a Soul
+    </div>
+
+    <a href="/">← Back to Home</a>
+  </div>
+</body>
+</html>
