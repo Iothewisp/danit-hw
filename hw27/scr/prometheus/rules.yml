@@ -1,0 +1,84 @@
+groups:
+- name: system_alerts
+  rules:
+
+  # 💾 Диск C: має менше 15% вільного місця
+  - alert: LowDiskSpace
+    expr: (windows_logical_disk_free_bytes{volume="C:"} / windows_logical_disk_size_bytes{volume="C:"}) * 100 < 15
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "💾 Диск C: має менше 15% вільного місця"
+
+  # 🔥 CPU завантажено більше ніж на 80%
+  - alert: HighCPUUsage
+    expr: 100 - (avg by (instance) (rate(windows_cpu_time_total{mode="idle"}[5m])) * 100) > 80
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "🔥 CPU завантажено більше ніж на 80%"
+
+  # 🔴 Один із таргетів недоступний
+  - alert: TargetDown
+    expr: up == 0
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "🔴 Один із таргетів недоступний"
+
+  # 🧠 RAM usage > 90%
+  - alert: HighMemoryUsage
+    expr: (1 - (windows_memory_available_bytes / windows_memory_total_bytes)) * 100 > 90
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "🧠 Пам'ять використана більше ніж на 90%"
+
+  # 🐢 CPU Queue Length > 5
+  - alert: HighCPUQueue
+    expr: windows_system_processor_queue_length > 5
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "🐢 Черга CPU перевищує 5 — можливе перевантаження"
+
+  # 📉 Network In < 1KB/s (симуляція падіння трафіку)
+  - alert: LowNetworkIn
+    expr: rate(windows_net_bytes_received_total[1m]) < 1024
+    for: 1m
+    labels:
+      severity: info
+    annotations:
+      summary: "📉 Вхідний трафік нижче 1KB/s"
+
+  # 📤 Network Out < 1KB/s
+  - alert: LowNetworkOut
+    expr: rate(windows_net_bytes_sent_total[1m]) < 1024
+    for: 1m
+    labels:
+      severity: info
+    annotations:
+      summary: "📤 Вихідний трафік нижче 1KB/s"
+
+  # 🕒 Високе навантаження на IO
+  - alert: HighDiskIO
+    expr: rate(windows_logical_disk_write_bytes_total[1m]) > 10000000
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "🕒 Високе навантаження на диск (запис >10MB/s)"
+
+  # 🧪 Тестовий алерт — просто для перевірки
+  - alert: AlwaysFires
+    expr: vector(1)
+    for: 10s
+    labels:
+      severity: test
+    annotations:
+      summary: "🧪 Тестовий алерт — завжди спрацьовує"

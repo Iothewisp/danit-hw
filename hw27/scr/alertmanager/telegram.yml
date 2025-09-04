@@ -1,0 +1,9 @@
+receivers:
+  - name: 'telegram'
+    telegram_configs:
+      - bot_token: '8189301864:AAFPqSVYLkHzbQdAYcJZBFXeWWYQ0X86zlE'
+        chat_id: 462103883
+        message: |
+          🚨 {{ .CommonLabels.alertname }} fired!
+          🔧 {{ .CommonLabels.instance }}
+          📊 {{ .CommonLabels.severity }}

@@ -1,0 +1,6 @@
+{{ define "telegram.default" }}
+{
+  "chat_id": "462103883",
+  "text": "🚨 {{ .CommonLabels.alertname }} активирован!\n🔧 {{ .CommonLabels.instance }}\n📊 Уровень: {{ .CommonLabels.severity }}"
+}
+{{ end }}

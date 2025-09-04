@@ -1,0 +1,20 @@
+groups:
+- name: system_alerts
+  rules:
+  - alert: LowDiskSpace
+    expr: (node_filesystem_free_bytes / node_filesystem_size_bytes) * 100 < 15
+    for: 1m
+    annotations:
+      summary: "💾 Вільного місця менше 15%"
+
+  - alert: HighCPUUsage
+    expr: (100 - avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+    for: 1m
+    annotations:
+      summary: "🔥 CPU > 80%"
+
+  - alert: TargetDown
+    expr: up == 0
+    for: 1m
+    annotations:
+      summary: "❌ Один із таргетів недоступний"
